@@ -52,7 +52,8 @@ export const Trending = ({ className }) => {
     };
 
     console.log({ results });
-    const img = `https://image.tmdb.org/t/p/w440_and_h660_face/`;
+    const baseSrc = 'https://image.tmdb.org/t/p/w440_and_h660_face/';
+    const baseHref = 'https://www.themoviedb.org/';
 
     return (
         <div className="trending className">
@@ -98,8 +99,10 @@ export const Trending = ({ className }) => {
                 {results?.map((user) => (
                     <div className="card">
                         <div className="card-img">
-                            <a href="https://www.themoviedb.org/tv/82856-the-mandalorian">
-                                <img src={img + user.poster_path} alt={user.title} />
+                            <a href={baseHref + 'tv/' + user.id + '-' + user.name}
+                            //  href={baseHref + 'tv/' + user.backdrop_path}
+                             >
+                                <img src={baseSrc + user.poster_path} alt={user.title} />
                             </a>
                         </div>
 
@@ -108,7 +111,7 @@ export const Trending = ({ className }) => {
                                 {user.vote_average.toFixed(1)}
                             </div>
                             <h2>
-                                <a href="https://www.themoviedb.org/tv/82856-the-mandalorian">
+                                <a href={baseHref + 'movie/' + user.backdrop_path}>
                                     {user.title}
                                     {user.name}
                                 </a>
