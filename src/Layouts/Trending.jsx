@@ -2,8 +2,9 @@ import "./trending.scss";
 import { useState, useEffect } from "react";
 
 export const Trending = ({ className }) => {
-    const media = ["all", "movie", "tv"];
+    // const media = ["all", "movie", "tv"];
     const [time, setTime] = useState("day");
+    const [media, setMedia] = useState("all");
     const baseUrl = "https://api.themoviedb.org/3/";
     const apiKey = "ffa300523873658c0dc98283306a3c45";
     const requestParams = `?api_key=${apiKey}`;
@@ -11,7 +12,7 @@ export const Trending = ({ className }) => {
     const [results, setResults] = useState(null);
 
     const fetchData = async () => {
-        const urlToFetch = `${baseUrl}/trending/${media[0]}/${time}${requestParams}`;
+        const urlToFetch = `${baseUrl}/trending/${media}/${time}${requestParams}`;
         try {
             const response = await fetch(urlToFetch);
 
@@ -28,10 +29,26 @@ export const Trending = ({ className }) => {
 
     useEffect(() => {
         fetchData();
-    }, [time]);
+    }, [time, media]);
 
-    const handelClick = (e) => {
+    const handelClickTime = (e) => {
         e.target.dataset.id === "week" ? setTime("day") : setTime("week");
+    };
+
+    const handelClickMedia = (e) => {
+        switch(e.target.dataset.id) {
+            case 'all':
+                setMedia("all");
+                break;
+            case 'movie':
+                setMedia("movie");
+                break;
+            case 'tv':
+                setMedia("tv");
+                break;
+            default:
+                setMedia("all");
+        }
     };
 
     console.log({ results });
@@ -43,17 +60,38 @@ export const Trending = ({ className }) => {
                 <h2 className="trending-header__title">Trending</h2>
                 <div className="trending-header__selector">
                     <h3>
-                        <button data-id='day' onClick={handelClick}>
+                        <button data-id='day' onClick={handelClickTime}>
                             today
-                        </button>      
+                        </button>
                     </h3>
 
                     <h3>
-                        <button data-id='week' onClick={handelClick}>
+                        <button data-id='week' onClick={handelClickTime}>
                             this week
                         </button>
                     </h3>
                 </div>
+
+                <div className="trending-header__selector">
+                    <h3>
+                        <button data-id='all' onClick={handelClickMedia}>
+                            All
+                        </button>
+                    </h3>
+
+                    <h3>
+                        <button data-id='movie' onClick={handelClickMedia}>
+                            Movies
+                        </button>
+                    </h3>
+
+                    <h3>
+                        <button data-id='tv' onClick={handelClickMedia}>
+                            Tv
+                        </button>
+                    </h3>
+                </div>
+
             </div>
 
             <div className="trending-content">
@@ -72,9 +110,11 @@ export const Trending = ({ className }) => {
                             <h2>
                                 <a href="https://www.themoviedb.org/tv/82856-the-mandalorian">
                                     {user.title}
+                                    {user.name}
                                 </a>
                             </h2>
-                            <p> {user.release_date} </p>
+                            <p> {user.release_date} 
+                            {user.first_air_date} </p>
                         </div>
                     </div>
                 ))}
