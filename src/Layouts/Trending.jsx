@@ -61,13 +61,13 @@ export const Trending = ({ className }) => {
                 <div className="trending-header__selector">
                     <h3>
                         <button data-id='day' onClick={handelClickTime}>
-                            today
+                            Today
                         </button>
                     </h3>
 
                     <h3>
                         <button data-id='week' onClick={handelClickTime}>
-                            this week
+                            This week
                         </button>
                     </h3>
                 </div>
