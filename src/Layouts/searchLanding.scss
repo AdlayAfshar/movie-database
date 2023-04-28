@@ -1,8 +1,149 @@
 .searchLanding {
-    background-color: rgb(60, 132, 249);
+    background-color: rgb(23, 70, 146);
     // background-image: url(../../public/img/bruno-oliveira.jpg);
     // background-size: cover;
-    padding: 100px;
+
+    padding: 120px 40px 0 40px;
     // margin: 0 100px;
     // height: 200px;
+    // max-width: 1300px;
+    //   min-height: 300px;
+    //   height: calc(100vh / 2.5);
+    //   max-height: 360px;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+    color: #fff;
+    width: 100%;
+    // display: flex;
+    // align-content: center;
+    // align-items: center;
+    // justify-content: center;
+
+    &-title {
+        width: 100%;
+        margin-bottom: 20px;
+        // background-color: khaki;
+
+        h2 {
+            font-size: 3em;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        h3 {
+            font-size: 2em;
+            font-weight: 600;
+            margin: 0;
+        }
+    }
+
+    form {
+        // background-color: aquamarine;
+        margin-top: 30px;
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        // width: 100%;
+
+        input {
+            width: 100%;
+            height: 46px;
+            line-height: 46px;
+            font-size: 1.1em;
+            color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 30px;
+            padding: 10px 20px;
+        }
+
+        button {
+            display: inline-flex;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            height: 46px;
+            padding: 10px 26px;
+            border: none;
+            background-color: rgb(43, 124, 124);
+            // background: linear-gradient(to right, rgba(var(--tmdbLightGreen), 1) 0%, rgba(var(--tmdbLightBlue), 1) 100%);
+            border-radius: 30px;
+            position: absolute;
+            top: 0;
+            right: -1px;
+            color: #fff;
+        }
+    }
+
+    &-card {
+        // background-color: rgb(241, 205, 158);
+
+        display: grid;
+        gap: 15px;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        margin-top: 100px;
+    }
+}
+
+.card {
+
+
+    &-img {
+        img {
+            //   height: 250px;
+            border-radius: 5px;
+            width: 100%;
+            //   outline: none;
+            //   border: 0;
+            //   overflow-clip-margin: content-box;
+            //   overflow: clip;
+        }
+    }
+
+    &-content {
+        // width: 100%;
+        padding: 26px 10px 12px 10px;
+        position: relative;
+        // white-space: normal;
+        // display: flex;
+        // align-content: flex-start;
+        // flex-wrap: wrap;
+
+        &__rate {
+            position: absolute;
+            top: -19px;
+            //   left: 10px;
+            //   margin-right: 0;
+            width: 38px;
+            height: 38px;
+            padding: 6px;
+            background-color: rgb(55, 5, 142);
+            border: 2px solid rgb(4, 212, 94);
+            border-radius: 50%;
+            color: aliceblue;
+        }
+
+        h2 {
+            font-size: 1em;
+            margin: 0;
+            width: 100%;
+            word-wrap: normal;
+            overflow-wrap: break-word;
+            //   font-weight: 700;
+            //   color: #000;
+
+            a {
+                // font-weight: 700;
+                color: #000;
+                text-decoration: none;
+            }
+        }
+
+        p {
+            font-size: 1em;
+            margin: 0;
+            padding: 0;
+            color: rgba(0, 0, 0, 0.6);
+        }
+    }
 }
