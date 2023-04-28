@@ -9,15 +9,25 @@ export function Header() {
 
   return (
     <div className="header">
-      {/* <Main /> */}
-      {/* <Movies />
-      <TVshows />  
+      <a href='kk'>
+        {/* <Main> */}
+        <div> main </div>
+        {/* </Main> */}
+      </a>
+      <a href='kk'>
+        {/* <Movies> */}
+        <div> Movies </div>
+        {/* </Movies> */}
+      </a>
+
+
+      {/* <TVshows />  
       <Search /> */}
-      <div> main </div>
-      <div> Movies </div>
+      
+      
       <div> TVshows </div>
       <input type="search" />
-      
+
     </div>
   );
 }
