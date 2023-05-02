@@ -109,6 +109,17 @@
                         font-size: 0.9em;
                         margin-right: 6px;
                         margin-top: 8px;
+                        will-change: background-color;
+                        transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+                    }
+
+                    &-show{
+                        margin-right: 10px;
+                        width: 250px
+                    }
+
+                    &__selected {
+                        background-color: rgb(60, 60, 249);
                     }
                 }
 
