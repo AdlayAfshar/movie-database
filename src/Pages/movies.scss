@@ -1,15 +1,15 @@
 .movie {
 
-    position: relative;
+    // position: relative;
 
-    &__header {
-        position: fixed;
-        // top: 0;
-        // left: 0;
-        display: block;
-        width: 100%;
-        transition: top 0.2s linear;
-    }
+    // &__header {
+    //     position: fixed;
+    //     // top: 0;
+    //     // left: 0;
+    //     display: block;
+    //     width: 100%;
+    //     transition: top 0.2s linear;
+    // }
 
     &__body {
         background-color: #f9f5f5;
@@ -38,48 +38,34 @@
                 // justify-content: space-between;
                 // overflow: hidden;
 
-                .nav-sort {
-                    background-color: rgb(244, 247, 240);
-                    min-width: 260px;
-                    width: 260px;
-                    border: 1px solid #e3e3e3;
-                    // border-radius: var(--imageBorderRadius);
-                    display: flex;
-                    flex-direction: column;
-                    align-items: flex-start;
-                    padding: 14px 16px 16px 16px;
-                    // flex-wrap: wrap;
-                    // justify-content: space-between;
-                    // overflow: hidden;
+                // .nav-sort {
+                //     background-color: rgb(244, 247, 240);
+                //     min-width: 260px;
+                //     width: 260px;
+                //     border: 1px solid #e3e3e3;
+             
+                //     display: flex;
+                //     flex-direction: column;
+                //     align-items: flex-start;
+                //     padding: 14px 16px 16px 16px;
 
-                    h3 {
-                        // display: inline-flex;
-                        // align-items: center;
-                        // width: 100%;
-                        font-size: 1em;
-                        font-weight: 300;
-                        margin-bottom: 10px;
-                    }
+                //     h3 {
+                //         font-size: 1em;
+                //         font-weight: 300;
+                //         margin-bottom: 10px;
+                //     }
 
-                    select {
-                        width: 100%;
-                        font-size: 0.9em;
-                        background-color: #e4e7eb;
-                        padding: 0.375rem 0.75rem;
-                        height: calc(1.5em + 0.75rem);
-                        border: 0;
-                        outline: 0;
-                        // display: none;
-
-                        option {
-                            font-weight: normal;
-                            display: block;
-                            white-space: nowrap;
-                            min-height: 1.2em;
-                            padding: 0px 2px 1px;
-                        }
-                    }
-                }
+                //     &__select {
+                      
+                //         width: 226px;
+                //         font-size: 0.9em;
+                //         background-color: #e4e7eb;
+                //         padding: 0.375rem 0.75rem;
+                //         height: calc(1.5em + 0.75rem);
+                //         border: 0;
+                //         outline: 0;
+                //     }
+                // }
 
                 .nav-genres {
                     margin-top: 12px;

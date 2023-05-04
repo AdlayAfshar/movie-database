@@ -1,53 +1,57 @@
 import "./movies.scss";
-// import "../Layouts/SearchLanding.scss"
 import { useState, useEffect } from "react";
-import { Header } from "../Layouts/Header";
+import { fetchData } from "../helper/fetchData";
+import { SortBox } from "../Layouts/SortBox";
 
-export function Movies() {
-  const baseUrl = "https://api.themoviedb.org/3/";
-  const apiKey = "ffa300523873658c0dc98283306a3c45";
-  const requestParams = `?api_key=${apiKey}`;
+export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
+  // const baseUrl = "https://api.themoviedb.org/3/";
+  // const apiKey = "ffa300523873658c0dc98283306a3c45";
+  // const requestParams = `?api_key=${apiKey}`;
 
   const [genres, setGenres] = useState([]);
-  const fetchGenres = async () => {
-    const urlToFetch = `${baseUrl}/genre/movie/list${requestParams}`;
-    try {
-      const response = await fetch(urlToFetch);
 
-      if (response.ok) {
-        const jsonResponse = await response.json();
-        const genres = jsonResponse.genres;
-        setGenres(genres);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const fetchGenres = async () => {
+  //   const urlToFetch = `${baseUrl}/genre/movie/list${requestParams}`;
+  //   try {
+  //     const response = await fetch(urlToFetch);
+
+  //     if (response.ok) {
+  //       const jsonResponse = await response.json();
+  //       const genres = jsonResponse.genres;
+  //       setGenres(genres);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
   useEffect(() => {
+    const fetchGenres = async () => {
+      const aa = await fetchData(`${baseUrl}/genre/movie/list${requestParams}`);
+      setGenres(aa.genres);
+    };
     fetchGenres();
   }, []);
 
   const [movies, setMovies] = useState(null);
   const [sort, setSort] = useState("discover/movie");
 
-  const fetchGetMovies = async () => {
-    const urlToFetch = `${baseUrl}${sort}${requestParams}&with_genres=${selectedGenres.join()}`;
-    console.log({ urlToFetch });
+  // const fetchGetMovies = async () => {
+  //   const urlToFetch = `${baseUrl}${sort}${requestParams}&with_genres=${selectedGenres.join()}`;
+  //   console.log({ urlToFetch });
 
-    try {
-      const response = await fetch(urlToFetch);
+  //   try {
+  //     const response = await fetch(urlToFetch);
 
-      if (response.ok) {
-        const jsonResponse = await response.json();
-        //const movies = jsonResponse.results; ? const movies = jsonResponse.movies;
-        const movies = jsonResponse.results;
-        setMovies(movies);
-        return movies;
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //     if (response.ok) {
+  //       const jsonResponse = await response.json();
+  //       const movies = jsonResponse.results;
+  //       setMovies(movies);
+  //       return movies;
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const [selectedGenres, setSelectedGenres] = useState([]);
 
@@ -61,10 +65,15 @@ export function Movies() {
     }
   };
 
-  console.log({ selectedGenres });
+  // console.log({ selectedGenres });
 
   useEffect(() => {
-    // console.log({sort});
+    const fetchGetMovies = async () => {
+      const aa = await fetchData(
+        `${baseUrl}${sort}${requestParams}&with_genres=${selectedGenres.join()}`
+      );
+      setMovies(aa.results);
+    };
     fetchGetMovies();
   }, [sort, selectedGenres]);
 
@@ -95,72 +104,52 @@ export function Movies() {
   // };
 
   const handelClickSort = (e) => {
-    // console.log(e)
     setSort(e.target.value);
   };
 
-  const isGenreSelected = () => {};
-
   // console.log({ selectedFlavors });
-  const baseSrc = "https://image.tmdb.org/t/p/w440_and_h660_face/";
-  const baseHref = "https://www.themoviedb.org/";
+  // const baseSrc = "https://image.tmdb.org/t/p/w440_and_h660_face/";
+  // const baseHref = "https://www.themoviedb.org/";
 
   return (
     <div className="movie">
-      <div className="movie__header">
-        <Header />
-      </div>
+     
       <div className="movie__body">
-        <section className="movie-title">
-          Top Rated Movies or Popular Movies
-        </section>
+        <section className="movie-title">Popular Movies</section>
         <section className="movie-content">
           <div className="movie-content-nav">
-            <div className="nav-sort">
+
+             <SortBox
+                onChange={handelClickSort}
+                value={sort} />
+
+            {/* <div className="nav-sort">
               <h3 className="nav-sort__label">Sort Results By</h3>
-              <select
-                name="sort"
+              <SortResults
                 className="nav-sort__select"
                 onChange={handelClickSort}
-                value={sort}
-              >
-                <option value="discover/movie">All</option>
-                <option value="movie/popular">Popularity</option>
-                <option value="movie/top_rated">Rating</option>
-              </select>
-            </div>
+                value={sort} />
+            </div> */}
 
             <div className="nav-genres">
               <h3>Genres</h3>
-              <div
-              // multiple={true}
-              // value={selectedFlavors}
-              // onChange={(e) => {
-              //     handleSelect(e.target);
-              // }}
-              >
+              <div>
                 {genres.map((genre) => (
                   <button
                     key={genre.id}
                     data-id={genre.id}
                     data-name={genre.name}
                     onClick={getSelectedGenres}
-                    className={`nav-genres-btn ${
-                      selectedGenres.includes(genre.id.toString())
-                        ? "nav-genres__selected"
-                        : ""
-                    }`}
+                    className={`nav-genres-btn ${selectedGenres.includes(genre.id.toString())
+                      ? "nav-genres__selected"
+                      : ""
+                      }`}
                   >
                     {genre.name}
                   </button>
                 ))}
               </div>
             </div>
-            {/* <div className="nav-genres-show">
-              {selectedGenres.map((genre) => (
-                <button >{genre}</button>
-              ))}
-            </div> */}
           </div>
 
           <div className="movie-content-box">
