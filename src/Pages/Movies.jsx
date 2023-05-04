@@ -1,8 +1,8 @@
 import "./movies.scss";
 import { useState, useEffect } from "react";
 import { fetchData } from "../helper/fetchData";
-import { SortBox } from "../Layouts/SortBox";
-import { GenresBox } from "../Layouts/GenresBox";
+import { SortBox } from "../Components/SortBox";
+import { GenresBox } from "../Components/GenresBox";
 
 export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
   // const baseUrl = "https://api.themoviedb.org/3/";
@@ -33,7 +33,7 @@ export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
     fetchGenres();
   }, []);
 
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState([]);
   const [sort, setSort] = useState("discover/movie");
 
   // const fetchGetMovies = async () => {
@@ -120,33 +120,6 @@ export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
           <div className="movie-content-nav">
             <SortBox onChange={handelClickSort} value={sort} />
 
-            {/* <div className="nav-sort">
-              <h3 className="nav-sort__label">Sort Results By</h3>
-              <SortResults
-                className="nav-sort__select"
-                onChange={handelClickSort}
-                value={sort} />
-            </div> */}
-
-            {/* <div className="nav-genres">
-              <h3>Genres</h3>
-              <div>
-                {genres.map((genre) => (
-                  <button
-                    key={genre.id}
-                    data-id={genre.id}
-                    data-name={genre.name}
-                    onClick={getSelectedGenres}
-                    className={`nav-genres-btn ${selectedGenres.includes(genre.id.toString())
-                      ? "nav-genres__selected"
-                      : ""
-                      }`}
-                  >
-                    {genre.name}
-                  </button>
-                ))}
-              </div>
-            </div> */}
             <GenresBox
               genres={genres}
               selectedGenres={selectedGenres}
@@ -156,7 +129,7 @@ export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
 
           <div className="movie-content-box">
             <div className="movie-content-box-card">
-              {movies?.map((movie) => (
+              {movies.map((movie) => (
                 <div className="card">
                   <div className="card-img">
                     <a href={baseHref + "movie/" + movie.id + "-" + movie.name}>
