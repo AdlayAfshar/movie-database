@@ -2,6 +2,7 @@ import "./movies.scss";
 import { useState, useEffect } from "react";
 import { fetchData } from "../helper/fetchData";
 import { SortBox } from "../Layouts/SortBox";
+import { GenresBox } from "../Layouts/GenresBox";
 
 export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
   // const baseUrl = "https://api.themoviedb.org/3/";
@@ -113,15 +114,11 @@ export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
 
   return (
     <div className="movie">
-     
       <div className="movie__body">
         <section className="movie-title">Popular Movies</section>
         <section className="movie-content">
           <div className="movie-content-nav">
-
-             <SortBox
-                onChange={handelClickSort}
-                value={sort} />
+            <SortBox onChange={handelClickSort} value={sort} />
 
             {/* <div className="nav-sort">
               <h3 className="nav-sort__label">Sort Results By</h3>
@@ -131,7 +128,7 @@ export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
                 value={sort} />
             </div> */}
 
-            <div className="nav-genres">
+            {/* <div className="nav-genres">
               <h3>Genres</h3>
               <div>
                 {genres.map((genre) => (
@@ -149,7 +146,12 @@ export function Movies({ baseUrl, requestParams, baseHref, baseSrc }) {
                   </button>
                 ))}
               </div>
-            </div>
+            </div> */}
+            <GenresBox
+              genres={genres}
+              selectedGenres={selectedGenres}
+              onClick={getSelectedGenres}
+            />
           </div>
 
           <div className="movie-content-box">
