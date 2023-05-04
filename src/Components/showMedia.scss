@@ -1,0 +1,56 @@
+.showMedia {
+    
+    padding-left: 30px;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+    .card {
+        background-color: rgb(244, 247, 240);
+        border: 1px solid #e3e3e3;
+
+        &-img {
+            img {
+                border-radius: 5px;
+                width: 100%;
+            }
+        }
+
+        &-content {
+            padding: 26px 10px 12px 10px;
+            position: relative;
+    
+            &__rate {
+                position: absolute;
+                top: -19px;
+                width: 38px;
+                height: 38px;
+                padding: 6px;
+                background-color: rgb(55, 5, 142);
+                border: 2px solid rgb(4, 212, 94);
+                border-radius: 50%;
+                color: aliceblue;
+            }
+
+            h2 {
+                font-size: 1em;
+                margin: 0;
+                width: 100%;
+                word-wrap: normal;
+                overflow-wrap: break-word;
+
+                a {
+                    color: #000;
+                    text-decoration: none;
+                }
+            }
+
+            p {
+                font-size: 1em;
+                margin: 0;
+                padding: 0;
+                color: rgba(0, 0, 0, 0.6);
+            }
+        }
+    }
+}
