@@ -15,7 +15,7 @@ export function Movies({ baseUrl, requestParams }) {
       setGenres(aa.genres);
     };
     fetchGenres();
-  }, []);
+  }, [baseUrl, requestParams]);
 
 
   const [movies, setMovies] = useState([]);
@@ -40,7 +40,7 @@ export function Movies({ baseUrl, requestParams }) {
       setMovies(aa.results);
     };
     fetchGetMovies();
-  }, [sort, selectedGenres]);
+  }, [sort, selectedGenres, baseUrl, requestParams]);
 
 
 

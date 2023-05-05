@@ -16,7 +16,7 @@ export const Trending = ({ baseUrl, requestParams }) => {
       setResults(results.results);
     };
     fetchGenres();
-  }, [time, media]);
+  }, [time, media, requestParams, baseUrl]);
 
   const handelClickTime = (e) => {
     e.target.dataset.id === "week" ? setTime("day") : setTime("week");

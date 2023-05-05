@@ -198,7 +198,7 @@ export function TVshows({ baseUrl, requestParams }) {
       setTvShows(aa.results);
     };
     fetchGetTvShows();
-  }, [sort, selectedGenres]);
+  }, [sort, selectedGenres, baseUrl, requestParams]);
 
 
 
