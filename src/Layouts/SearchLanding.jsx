@@ -1,10 +1,10 @@
-// import { MovieCard } from '../Components/MovieCard';
 import './searchLanding.scss';
 import { useState } from "react";
 import { fetchData } from "../helper/fetchData";
 import { ShowMedia } from '../Components/ShowMedia';
+import { SearchBar } from '../Components/SearchBar';
 
-export const SearchLanding = ({ baseUrl, requestParams}) => {
+export const SearchLanding = ({ baseUrl, requestParams }) => {
 
     const [searchKey, setSearchKey] = useState('');
     const [results, setResults] = useState([]);
@@ -36,12 +36,6 @@ export const SearchLanding = ({ baseUrl, requestParams}) => {
 
     }
 
-    // console.log({ results });
-    // const baseSrc = 'https://image.tmdb.org/t/p/w440_and_h660_face/';
-    // const baseHref = 'https://www.themoviedb.org/';
-
-
-
     return (
         <div className="searchLanding">
             <div className="searchLanding-title">
@@ -49,29 +43,9 @@ export const SearchLanding = ({ baseUrl, requestParams}) => {
                 <h3> Millions of movies, TV shows and people to discover. Explore now.</h3>
             </div>
 
-
-            <form className='form' onSubmit={searchMovie}>
-
-                <input type='text' onChange={handleChange} value={searchKey} className='form__input' />
-
-                <div className='form__btn-group'>
-
-                    <button className='form__btn'> Search </button>
-
-                </div>
-
-            </form>
-            {/* <p>
-                {searchKey}
-            </p> */}
-
-
+            <SearchBar type='text' onSubmit={searchMovie} onChange={handleChange} searchKey={searchKey} />
+    
             <ShowMedia media={results} path={results.media_type} className="searchLanding-card" />
-
-
-
-
-
 
         </div>
     )
