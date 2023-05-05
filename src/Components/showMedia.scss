@@ -1,18 +1,22 @@
+
 .showMedia {
-    
-    padding-left: 30px;
-    display: grid;
-    gap: 30px;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    // gap: 20px;
+    // padding: 40px;
+    // margin-left: 40px;
 
     .card {
         background-color: rgb(244, 247, 240);
         border: 1px solid #e3e3e3;
+        border-radius: 5px;
+     
 
         &-img {
             img {
-                border-radius: 5px;
-                width: 100%;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                // width: 100%;
+                width: 178px;
+                // border-radius: none;
             }
         }
 

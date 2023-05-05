@@ -1,14 +1,15 @@
 import "./showMedia.scss";
 
-export function ShowMedia({ media }) {
+export function ShowMedia({ media, path, className }) {
     const baseSrc = "https://image.tmdb.org/t/p/w440_and_h660_face/";
     const baseHref = "https://www.themoviedb.org/";
   return (
     <div className="showMedia">
+      <div className={className}>
               {media.map((movie) => (
                 <div className="card">
                   <div className="card-img">
-                    <a href={baseHref + "movie/" + movie.id + "-" + movie.name}>
+                    <a href={baseHref + path + movie.id + "-" + movie.name}>
                       <img
                         src={baseSrc + movie.poster_path}
                         alt={movie.title}
@@ -21,7 +22,7 @@ export function ShowMedia({ media }) {
                       {movie.vote_average.toFixed(1)}
                     </div>
                     <h2>
-                      <a href={baseHref + "movie/" + movie.backdrop_path}>
+                      <a href={baseHref + path + "/" + movie.backdrop_path}>
                         {movie.title}
                         {movie.name}
                       </a>
@@ -34,6 +35,7 @@ export function ShowMedia({ media }) {
                   </div>
                 </div>
               ))}
+            </div>
             </div>
   );
 }

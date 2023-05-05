@@ -221,8 +221,8 @@ export function TVshows({ baseUrl, requestParams }) {
             />
           </div>
 
-          <div className="movie-content-box">
-            <ShowMedia media={tvShows}/>
+          <div>
+            <ShowMedia media={tvShows} path="tv" className="movie-content-box"/>
 
           </div>
         </section>

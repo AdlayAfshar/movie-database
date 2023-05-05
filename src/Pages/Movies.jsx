@@ -63,8 +63,8 @@ export function Movies({ baseUrl, requestParams }) {
             />
           </div>
 
-          <div className="movie-content-box">
-            <ShowMedia media={movies}/>
+          <div>
+            <ShowMedia media={movies} path="movie" className="movie-content-box"/>
 
           </div>
         </section>
