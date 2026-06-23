@@ -2,6 +2,9 @@
 
 A React movie and TV discovery app powered by [The Movie Database (TMDB)](https://www.themoviedb.org/). The app lets users search for movies and TV shows, browse trending titles, and filter movie or TV discovery results by sort order and genre.
 
+<img width="1200" height="854" alt="Screenshot 2026-06-23 at 10 39 40" src="https://github.com/user-attachments/assets/2c945ccd-b0d9-44e3-aeea-0a28f1debe15" />
+
+
 ## Features
 
 - Search TMDB movies and TV shows from a shared landing search form.
