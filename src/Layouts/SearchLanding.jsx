@@ -36,7 +36,7 @@ export const SearchLanding = ({ baseUrl, requestParams }) => {
   return (
     <div className="searchLanding">
       <div className="searchLanding-title">
-        <h2>SEARCh.</h2>
+        <h2>Move Database</h2>
         <h3>
           {" "}
           Millions of movies, TV shows and people to discover. Explore now.
