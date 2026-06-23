@@ -15,9 +15,10 @@
     "start": "vite --host 0.0.0.0",
     "dev": "vite --host 0.0.0.0",
     "build": "vite build",
+    "build:github-pages": "VITE_BASE_PATH=/movie-database/ vite build",
     "preview": "vite preview --host 0.0.0.0",
     "test": "vitest run",
-    "deploy": "npm run build && gh-pages -d dist"
+    "deploy": "npm run build:github-pages && gh-pages -d dist"
   },
   "engines": {
     "node": ">=22.13.0"
