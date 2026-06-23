@@ -1,70 +1,125 @@
-# Getting Started with Create React App
+# Movie Database
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React movie and TV discovery app powered by [The Movie Database (TMDB)](https://www.themoviedb.org/). The app lets users search for movies and TV shows, browse trending titles, and filter movie or TV discovery results by sort order and genre.
+
+## Features
+
+- Search TMDB movies and TV shows from a shared landing search form.
+- Browse trending media for today or this week.
+- Switch trending results between all media, movies, and TV shows.
+- View movie discovery results with popularity and rating sort options.
+- View TV discovery results with genre filters.
+- Filter movie and TV sections by one or more genres.
+- View poster art, ratings, titles, and release dates in reusable media cards.
+
+## Tech Stack
+
+- React 19
+- Vite
+- Sass stylesheets
+- Vitest and Testing Library
+- TMDB REST API
+- GitHub Pages deployment via `gh-pages`
+
+## Project Structure
+
+```text
+src/
+  Components/     Reusable UI pieces such as search, filters, and media cards
+  Layouts/        Page sections such as the header, search landing, and trending
+  Pages/          Main page composition plus movie and TV sections
+  helper/         Shared fetch helper for TMDB requests
+```
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 22.13 or newer
+- npm
+- A TMDB API key if you want to replace the currently hardcoded development key
+
+### Install
+
+```bash
+npm install
+```
+
+### Run Locally
+
+```bash
+npm start
+```
+
+The app runs at the Vite dev-server URL printed in the terminal, usually [http://localhost:5173](http://localhost:5173).
+
+### Build
+
+```bash
+npm run build
+```
+
+This creates an optimized production build in the `dist/` directory.
+
+### Test
+
+```bash
+npm test
+```
+
+This runs the Vitest test suite once.
+
+### CodeSandbox
+
+Import the repository into CodeSandbox and run:
+
+```bash
+npm install
+npm start
+```
+
+The `start` script binds Vite to `0.0.0.0`, which lets CodeSandbox expose the preview URL.
+
+## TMDB API Configuration
+
+TMDB requests are configured in `src/Pages/Main.jsx`:
+
+```js
+const baseUrl = "https://api.themoviedb.org/3/";
+const apiKey = "ffa300523873658c0dc98283306a3c45";
+const requestParams = `?api_key=${apiKey}`;
+```
+
+For a production app, move the API key into an environment variable and avoid committing private credentials. With Vite, browser-exposed environment variables must start with `VITE_`.
 
 ## Available Scripts
 
-In the project directory, you can run:
+- `npm start` - start the local development server.
+- `npm run dev` - start the local development server.
+- `npm run build` - create a production build.
+- `npm run preview` - preview the production build locally.
+- `npm test` - run tests once.
+- `npm run deploy` - build the app and publish the `dist/` directory to GitHub Pages.
 
-### `npm start`
+## Deployment
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The project is configured for GitHub Pages with this homepage:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```json
+"homepage": "https://AdlayAfshar.github.io/movie-database/"
+```
 
-### `npm test`
+To deploy:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+npm run deploy
+```
 
-### `npm run build`
+The deployment script runs a production build and publishes the generated `dist/` folder using `gh-pages`. `vite.config.js` uses `/movie-database/` as the base path for production builds and `/` for development previews.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Development Notes
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `fetchData` in `src/helper/fetchData.js` wraps `fetch` and returns parsed JSON for successful TMDB responses.
+- `ShowMedia` in `src/Components/ShowMedia.jsx` handles shared poster-card rendering for search, trending, movie, and TV results.
+- Movie and TV pages share the same filter components, but the sort options currently use movie endpoint values.
+- The smoke test in `src/App.test.jsx` mocks TMDB responses so it can run without network access.
